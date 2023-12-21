@@ -18,10 +18,11 @@ const dbConfig = require("./config/dbConfig");
 
 app.use(cors());
 app.use(express.json());
-if(process.env.NODE_ENV === 'production'){
-  app.use(express.static('public'));
-  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'public', 'index.html')));
-}
+app.use(express.static('./public'));
+// if(process.env.NODE_ENV === 'production'){
+//   app.use(express.static('public'));
+//   app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'public', 'index.html')));
+// }
 app.use("/api/users", userRoute);
 app.use("/api/books", bookRoute);
 app.use("/api/ratings", ratingRoute);
