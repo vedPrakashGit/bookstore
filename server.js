@@ -1,6 +1,6 @@
 const express = require("express");
-const path = require("path");
 const userRoute = require("./routes/userRoute");
+const path = require("path");
 const bookRoute = require("./routes/bookRoute");
 const ratingRoute = require("./routes/ratingRoute");
 const cartRoute = require("./routes/cartRoute");
@@ -10,20 +10,17 @@ const cors = require("cors");
 const app = express();
 const PORT = 8080;
 
+console.log(path);
 require("dotenv").config();
 const dbConfig = require("./config/dbConfig");
 
-// app.get("/", (req, res) => {
-//   res.send("Hello World!");
-// });
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 app.use(cors());
 app.use(express.json());
-// app.use(express.static('./public'));
-if(process.env.NODE_ENV === 'production'){
-  app.use(express.static('client/dist'));
-  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html')));
-}
+app.use(express.static("./public"));
 app.use("/api/users", userRoute);
 app.use("/api/books", bookRoute);
 app.use("/api/ratings", ratingRoute);
