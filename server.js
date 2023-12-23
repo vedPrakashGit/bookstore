@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static("./public"));
+app.use(express.static("."));
 app.use("/api/users", userRoute);
 app.use("/api/books", bookRoute);
 app.use("/api/ratings", ratingRoute);
