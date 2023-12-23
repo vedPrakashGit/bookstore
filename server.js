@@ -14,9 +14,9 @@ console.log(path);
 require("dotenv").config();
 const dbConfig = require("./config/dbConfig");
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello World!");
+// });
 
 app.use(cors());
 app.use(express.json());
